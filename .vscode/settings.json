@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "vsDB",
+            "database": "practDB",
+            "username": "root",
+            "password": "MyRoot@789870",
+            "connectionTimeout": 30
+        }
+    ]
+}
