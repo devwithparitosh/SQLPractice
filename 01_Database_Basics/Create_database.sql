@@ -42,3 +42,14 @@ ALTER TABLE employees DROP COLUMN hire_date;
 
 /*What is the correct syntax to retrieve the first and last names of employees who earn more than $110 per hour AND are older than 1000?*/
 SELECT first_name, last_name FROM employees WHERE hourly_pay>110 AND AGE>1000;
+
+-- If you wanted to see the potential annual salary for each employee (assuming a 40-hour work week for 52 weeks), which expression would you use in the SELECT clause?
+SELECT first_name,hourly_pay*40*52 FROM employees;
+
+RENAME TABLE employees TO temp_workers;
+
+SELECT * FROM temp_workers;
+
+-- structure of the table
+
+DESCRIBE temp_workers;
