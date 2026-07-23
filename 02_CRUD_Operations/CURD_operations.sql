@@ -37,4 +37,4 @@ SELECT * from Students;
 TRUNCATE TABLE Students;
 
 -- Drop the table.
-DROP TABLE Students;
+DROP TABLE Students; 
