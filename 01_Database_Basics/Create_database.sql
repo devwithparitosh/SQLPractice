@@ -52,4 +52,4 @@ SELECT * FROM temp_workers;
 
 -- structure of the table
 
-DESCRIBE temp_workers;
+DESCRIBE temp_workers; 
