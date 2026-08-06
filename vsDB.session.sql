@@ -1,0 +1,34 @@
+-- Learn
+-- COUNT
+-- SUM
+-- AVG
+-- MIN
+-- MAX
+-- UPPER
+-- LOWER
+-- LENGTH
+-- ROUND
+-- NOW
+
+
+-- Practice Questions (20)
+-- Count all employees.
+-- Find the highest salary.
+-- Find the lowest salary.
+-- Calculate average salary.
+-- Calculate total salary.
+-- Convert names to uppercase.
+-- Convert names to lowercase.
+-- Display the length of each name.
+-- Round decimal values.
+-- Show the current date.
+-- Extract the year.
+-- Extract the month.
+-- Find employees hired today.
+-- Replace text in a column.
+-- Concatenate first and last names.
+-- Find the longest name.
+-- Find the shortest name.
+-- Count departments.
+-- Find duplicate names.
+-- Remove duplicate records.

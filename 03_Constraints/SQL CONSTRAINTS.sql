@@ -147,17 +147,46 @@ UPDATE emp SET salary=2000 WHERE emp_id=102;
 -- output:-Check constraint 'salar_check' is violated.
 
 
+-- 6) DEFAULT constraint in SQL automatically assigns a predefined value to a column when no value is provided during insertion. It helps maintain consistency and reduces the need to specify values for every column in an INSERT query.
+
+-- Fills the column with a preset value when omitted.
+-- Ensures consistent data without manual input.
+/*
+
+CREATE TABLE table_name (
+  column1 datatype DEFAULT default_value,
+  column2 datatype DEFAULT default_value
+);
+
+-----------------Dropping the DEFAULT Constraint-------------
+ALTER TABLE tablename
+ALTER COLUMN columnname
+DROP DEFAULT;
+
+*/
+
+
 -- Set a DEFAULT joining date.
-
-
-
-
-
+ALTER TABLE emp ADD COLUMN joining_date DATE DEFAULT '2023-08-05';
 
 
 -- Try inserting NULL names.
+INSERT INTO emp(emp_id,emp_name,city_state,email,salary,joining_date)
+VALUES(104, NULl, 'delhi', 'rugin@gmai.com',60000,DEFAULT);
+
+-- output:-Column 'emp_name' cannot be null
 
 -- Delete a parent record and observe the result.
+DELETE from emp WHERE emp_id=101;
+
+-- output:-Cannot delete or update a parent row: a foreign key constraint fails (`practDB`.`Dept`, CONSTRAINT `ep_person` FOREIGN KEY (`Employee_id`) REFERENCES `emp` (`emp_id`))
+
+DESCRIBE emp;
+DESCRIBE Dept;
+
 -- Update a foreign key.
--- Add a constraint using ALTER TABLE.
+
+
 -- Remove a constraint.
+ALTER TABLE emp DROP CONSTRAINT salar_check;
+
