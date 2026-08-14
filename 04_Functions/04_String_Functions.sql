@@ -1,0 +1,8 @@
+-- LOCATE
+-- CONCAT
+-- LOWER
+-- TRIM
+-- SUBSTRING
+-- UPPER
+-- LENGTH
+-- REPLACE

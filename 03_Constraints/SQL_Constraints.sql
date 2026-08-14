@@ -1,4 +1,4 @@
--- SQL CONSTRAINTS
+MyDatabase-- SQL CONSTRAINTS
 
 -- Learn about 
 
@@ -190,3 +190,27 @@ DESCRIBE Dept;
 -- Remove a constraint.
 ALTER TABLE emp DROP CONSTRAINT salar_check;
 
+
+-- 7) An Alternate Key is a candidate key that is not chosen as the Primary Key but can still uniquely identify a record in a table.
+
+-- When multiple attributes can uniquely identify records, only one is selected as the Primary Key.
+-- The remaining unique attributes act as Alternate Keys, providing alternative ways to identify records.
+/*
+CREATE TABLE CustomerInfo (
+    CustomerID INT PRIMARY KEY,         
+    CustomerName VARCHAR(50),
+    EmailAddress VARCHAR(100) UNIQUE,  
+    PanNumber VARCHAR(20) UNIQUE,       
+    City VARCHAR(50)
+);
+
+
+INSERT INTO CustomerInfo VALUES 
+(1, 'James Carter', 'james.carter@example.com', 'PANA12345Z', 'New York'),
+(2, 'Emily Watson', 'emily.watson@example.com', 'PANB67890Q', 'Los Angeles');
+
+
+-- EmailAddress and PanNumber act as Alternate Keys (unique but not the Primary Key).
+-- Both rows follow the uniqueness rules.
+
+*/

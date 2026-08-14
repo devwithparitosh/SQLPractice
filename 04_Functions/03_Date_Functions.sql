@@ -1,0 +1,9 @@
+-- Date Functions
+-- DATE_FORMAT
+-- DATEDIFF
+-- DAY
+-- STR_TO_DATE
+-- YEAR
+-- MONTH
+-- NOW
+-- CURDATE

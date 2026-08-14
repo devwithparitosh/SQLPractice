@@ -1,22 +1,12 @@
--- Learn
--- COUNT
--- SUM
--- AVG
--- MIN
--- MAX
--- UPPER
--- LOWER
--- LENGTH
+-- FLOOR
+-- MOD
+-- TRUNCATE
+-- POWER
+-- ABS
 -- ROUND
--- NOW
+-- CEIL
+-- SQRT
 
-
--- Practice Questions (20)
--- Count all employees.
--- Find the highest salary.
--- Find the lowest salary.
--- Calculate average salary.
--- Calculate total salary.
 -- Convert names to uppercase.
 -- Convert names to lowercase.
 -- Display the length of each name.
@@ -32,3 +22,5 @@
 -- Count departments.
 -- Find duplicate names.
 -- Remove duplicate records.
+
+
