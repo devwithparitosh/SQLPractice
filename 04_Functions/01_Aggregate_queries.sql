@@ -5,7 +5,7 @@
 -- Find the lowest salary.
 -- Calculate average salary.
 -- Calculate total salary.
-
+-- Count departments.
 
 -- Learn
 -- COUNT(DISTINCT column)

@@ -9,6 +9,13 @@
 -- NOW
 -- CURDATE
 
+-- Questions
+-- Show the current date.
+-- Extract the year.
+-- Extract the month.
+-- Find employees hired today.
+
+
 -- SQL Date Functions are built-in tools used to handle, modify and analyze date/time values in a database. They help perform tasks like retrieving current dates, calculating differences and formatting results effectively.
 
 -- Extract specific parts of a date (year, month, day).
