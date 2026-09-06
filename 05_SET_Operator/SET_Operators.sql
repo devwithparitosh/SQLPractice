@@ -124,5 +124,7 @@ ORDER BY OrderID;
 
 /*
 :- Indentifying the differnece or changes(delta) between two batches of data 
-:- Except Operator can be used to compare tables to detect discrepancies between databases.
 */
+
+-- Except Use case (Check Completeness)
+-- :- Except Operator can be used to compare tables to detect discrepancies between databases.

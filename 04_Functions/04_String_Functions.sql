@@ -26,9 +26,12 @@ SELECT UPPER('hello') AS UpperCase;
 SELECT LOWER('HELLO') AS LowerCase;
 */
 
-SELECT UPPER(name) as captial_case, name FROM Students;
-
-SELECT LOWER(name) AS Small_case, name FROM Students;
+SELECT UPPER(name) as captial_case,
+    name
+FROM Students;
+SELECT LOWER(name) AS Small_case,
+    name
+FROM Students;
 
 
 /*
@@ -46,10 +49,13 @@ SUBSTRING() / SUBSTR()
 The SUBSTRING() (or SUBSTR()) function is used to extract a substring from a string, starting from a specified position.
 
 Query:
-SELECT SUBSTRING('Hello World', 1, 5) AS SubStringExample;
+SELECT SUBSTRING(value, start, length) AS SubStringExample;
 */
 
 SELECT SUBSTRING(emp_name,1,3) AS SUBstring_name,emp_name FROM emp;
+
+
+Select SUBSTRING(fIrst_name,2,LENGTH(first_name)) as Substring_Example FROM Students;      -- make the length dynamic by using LENGTH() function to get the length of the string.
 
 
 /*---LEFT() and RIGHT()
