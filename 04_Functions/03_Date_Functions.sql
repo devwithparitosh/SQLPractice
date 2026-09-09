@@ -193,3 +193,130 @@ millisecond, ms = Millisecond
 -- this is the best QUERY to work on the date it will do all  the operation of date, time , hour, year, month.
 
 SELECT emp_id , first_name, DATEADD(YEAR,10, joining_date) AS DATE_add FROM temp_workers;
+
+
+use SalesDB;
+
+SELECT
+    OrderID,
+    OrderDate,
+    ShipDate,
+    CreationTime
+FROM Sales.Orders;
+
+-- HardCodded
+SELECT
+    OrderID,
+    OrderDate,
+    CreationTime,
+    '2026-08-20' HardCoded
+FROM Sales.Orders;
+
+
+-- 	GETDATE()
+-- This function is used to get the current database system date and time.
+
+SELECT
+    OrderID,
+    OrderDate,
+    ShipDate,
+    CreationTime,
+    GETDATE() Today
+FROM Sales.Orders;
+
+ 
+SELECT 
+    DAY(ShipDate) as DayOfShip,
+    MONTH(ShipDate) as MonthofShip,
+    YEAR(ShipDate) as Yearofship
+from Sales.Orders;
+
+-- DATEPART()
+-- Is used to return a specified part of a date or time value as integer.
+SELECT 
+     DATEPART(year,CreationTime) as Year_dp,
+     DATEPART(quarter,CreationTime) as quarter_dp,
+     DATEPART(week,CreationTime) as week_dp,
+     DATEPART(Hour,CreationTime) as Hour_dp
+From Sales.Orders;
+
+
+-- 	DATE_BUCKET()
+-- Is used to group data into groups that correspond to fixed periods of time.
+
+-- 	DATEADD()
+-- Is used to add a specific number of intervals to a given date or time value.
+
+-- 	DATEDIFF()
+-- Is used to calculate the difference between two date values and returns in a int data type.
+
+-- 	DATEDIFF_BIG()
+-- Is used to calculate the difference between two dates values and return in a bigint data type.
+
+-- 	DATEFROMPARTS()
+-- This function is used to retrieve a date from individual segments such as year, month, and day.
+
+-- 	DATENAME()
+-- This function is used to retrieve a specified part of a date or time value as string.
+
+Select
+    DATENAME(quarter,CreationTime) as quater_in_string,
+    DATENAME(Weekday,CreationTime) as week_in_str,
+    DATENAME(Day,CreationTime) as day_in_str,
+    DATENAME(month,CreationTime) month_in
+From Sales.OrdersArchive;
+
+
+-- DATETRUNC()
+-- Is used to truncate a date or time value to a specified datepart (such as year, month, day, etc.).
+
+Select
+     DATETRUNC(minute, CreationTime) as Minute_afterward_reset,
+     DATETRUNC(month, CreationTime) as Month_afterward_reset,
+     CreationTime
+From Sales.OrdersArchive;
+
+
+-- 	EOMONTH()
+-- This function is used to get the last day of the month for a specified date value.
+
+Select
+    CreationTime,
+    EOMONTH(CreationTime) as ENDOftheMonth
+From Sales.OrdersArchive;
+    
+-- 	GETUTCDATE()
+-- This function is used to get the current database system UTC date and time.
+
+-- 	ISDATE()
+-- Is used to determine whether a value is a valid date or not.
+
+-- Q:- How many orders were placed each year?
+Select
+    YEAR(OrderDate),
+    COUNT(*)
+From Sales.Orders
+GROUP BY YEAR(OrderDate);
+
+
+-- Q:-HOW many orders were placed each month?
+Select 
+    DATENAME(MONTH,OrderDate) as MonthOfOrder,
+    count(*)
+From Sales.Orders
+GROUP BY DATENAME(MONTH,OrderDate);
+
+
+-- Q: Show all orders That were placed during the month of february
+Select 
+    *
+From Sales.Orders
+Where MONTH(OrderDate)=2;
+--Filtering data using an integer is faster than using a string
+Select 
+   *
+From Sales.Orders
+where DATENAME(Month, OrderDate)='February';
+-- But it's slower than the integer searching. Avoid using DateName() for filtering data, instead use DatePart()
+
+-- Formating & Casting ----------------------------------
