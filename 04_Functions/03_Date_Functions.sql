@@ -244,15 +244,6 @@ From Sales.Orders;
 -- 	DATE_BUCKET()
 -- Is used to group data into groups that correspond to fixed periods of time.
 
--- 	DATEADD()
--- Is used to add a specific number of intervals to a given date or time value.
-
--- 	DATEDIFF()
--- Is used to calculate the difference between two date values and returns in a int data type.
-
--- 	DATEDIFF_BIG()
--- Is used to calculate the difference between two dates values and return in a bigint data type.
-
 -- 	DATEFROMPARTS()
 -- This function is used to retrieve a date from individual segments such as year, month, and day.
 
@@ -319,4 +310,84 @@ From Sales.Orders
 where DATENAME(Month, OrderDate)='February';
 -- But it's slower than the integer searching. Avoid using DateName() for filtering data, instead use DatePart()
 
+
 -- Formating & Casting ----------------------------------
+-- Formating is Changing the format of a value from one to another. Changing how the data looks.
+-- casting is Changing the datatype from one to another.
+
+-- FORMAT(Value, Format);
+Select 
+    OrderID,
+    CreationTime,
+    FORMAT(CreationTime,'MM-dd-yyyy'),
+    FORMAT(CreationTime, 'dd') as dd,
+    FORMAT(CreationTime, 'ddd') as ddd,
+    FORMAT(CreationTime, 'dddd') as dddd,
+    FORMAT(CreationTime, 'MM') as MM,
+    FORMAT(CreationTime, 'MMM') as MMM,
+    FORMAT(CreationTime, 'MMMM') as mmmm
+From Sales.Orders;
+
+-- Q: Show CreationTime Using the Following Format:
+-- Day WED Jan Q1 2025 12:34:56 PM
+
+SELECT
+    'Day '+FORMAT(CreationTime, 'ddd MMM') +
+    ' Q'+DATENAME(QUARTER,CreationTime)+' '+
+    FORMAT(CreationTime ,'yyyy hh:mm:ss tt') as CustomFormat
+From Sales.Orders;
+
+-- Q:- sales by MONTHwithyear
+Select
+    FORMAT(OrderDate, 'MMM yy') as OrderDate,
+    COUNT(*)
+From Sales.Orders
+GROUP BY FORMAT(OrderDate,'MMM yy');
+
+
+-- CONVERT() :- Converts a date or time value to a different datatype & format the value
+-- CONVERT(data_type, value [,style])
+
+Select
+    CreationTime,
+    CONVERT(DATE,CreationTime) as [Date_time to date],    -- casting
+    CONVERT(VARCHAR,CreationTime, 32) as [USA std. Style:32] -- Formating
+From Sales.Orders;
+
+
+-- CAST() : Converts a value to a Specified dataType.
+
+Select
+    CAST('123' as INT ) as [String to int],
+    CAST( 123 as varchar) as [INT as String],
+    CAST('2025-08-20' as date) as [String to Date],
+    CAST('2025-08-20' as datetime2) as [String to Datetime],
+    CreationTime,
+    CAST(CreationTime as date) as [Datetime to date]
+From Sales.Orders;
+    
+--Date Calculation
+
+-- 	DATEADD()
+-- Is used to add a specific number of intervals to a given date or time value.
+
+-- DATEADD(part,interval,date);
+Select
+    OrderID,
+    OrderDate,
+    DATEADD(MONTH,3,OrderDate) as addMonth,
+    DATEADD(YEAR, 2,OrderDate) as addYear,           -- add the year
+    DATEADD(DAY, -5,OrderDate) as subtractdate        -- subtract the date
+from Sales.Orders;
+
+-- 	DATEDIFF_BIG()
+-- Is used to calculate the difference between two dates values and return in a bigint data type.
+
+-- 	DATEDIFF()
+-- Is used to calculate the difference between two date values and returns in a int data type.
+
+-- find the interval days  between the shipping and delievery date
+Select 
+    OrderID,
+    DATEDIFF(DAY,OrderDate,ShipDate) as Deliverydays
+From Sales.Orders;

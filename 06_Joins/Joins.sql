@@ -415,7 +415,12 @@ Display:
 employee name
 orderid*/
 
- 
+select 
+	e.FirstName AS EmployeeName,
+	o.OrderID
+from Sales.Employees as e
+left join Sales.Orders as o
+on e.EmployeeID=o.SalesPersonID;
 
 /*practice---JOIN + Aggregation
 
