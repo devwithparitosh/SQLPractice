@@ -391,3 +391,30 @@ Select
     OrderID,
     DATEDIFF(DAY,OrderDate,ShipDate) as Deliverydays
 From Sales.Orders;
+
+
+--Time gap analysis 
+--Find the number of days between each order and the pervious order
+-- LAG() :- Access a value from the pervious row
+
+Select 
+    OrderID,
+    OrderDate,
+    LAG(OrderDate) OVER (ORDER BY OrderDate) as Pervious_Date,
+    DATEDIFF(Day, LAG(OrderDate) OVER (ORDER BY OrderDate), OrderDate) as NOOFDays
+From Sales.Orders;
+
+Select
+    ISDATE('1123') as Stringvalue,
+    ISDATE('2025-08-20') as StandardFormat,
+    ISDATE('2025') as ONLYyear,
+    ISDATE('08') as monthofyear
+
+-- null Function
+Select
+    COALESCE(ShipAddress, BillAddress,'N/A')
+from Sales.Orders;
+
+Select
+    ShipAddress, BillAddress
+From Sales.Orders;
