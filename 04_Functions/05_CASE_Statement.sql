@@ -38,3 +38,73 @@ from(
 )t 
 GROUP BY Category
 ORDER BY TotalSales ASC;
+
+
+-- #2 Mapping :- Transform the value from one form to another.
+-- Q:-Retrive employee details with gender diaplayed as full text.
+Select
+    EmployeeID,
+    FirstName,
+    LastName,
+    Gender,
+    CASE
+        WHEN Gender = 'M' Then 'Male'
+        WHEN Gender='F' Then 'Female'
+        ELSE 'Not Available'
+    END as GenderINtext
+from Sales.Employees;
+
+-- Q:- Retrive customers deatils with abbreviated country code.
+Select 
+    CustomerID,
+    FirstName,
+    lastName,
+    Country,
+    CASE 
+        WHEN Country='USA' THEN 'US'
+        WHEN Country='Germany' THEN 'DE'
+        ELSE 'N/A'
+    END as CountryCode,
+
+    CASE Country                         -- Quick FORM for the single column
+         WHEN 'USA' THEN 'US'
+         WHEN 'Germany' THEN 'DE'
+         ELSE 'N/A'
+    END as CountryCode2
+From Sales.Customers;
+
+
+-- #3 Handling the NULL values.
+-- Q:- Find the average score of customers and treat NUlls AS 0. Additionally provide deatils such as CustomerID and LastName.
+Select
+    CustomerID,
+    LastName,
+    Score,
+    CASE 
+        WHEN Score IS NULL THEN 0
+        ELSE Score
+    END as CleanScore,
+
+    AVG(CASE 
+        WHEN Score IS NULL THEN 0
+        ELSE Score
+        END) Over() AVGScore,
+
+    AVG(Score) Over() AVGScore2
+
+    -- AVG(isnull(Score,0)) Over() AVGScore
+From Sales.Customers;
+
+
+-- #4 Conditinal Aggergation
+-- Q:- Count How many times each customer has made an order with sales greater than 30.
+
+Select
+    CustomerID,
+    SUM(Case 
+        When Sales>30 then 1
+        Else 0
+        END) as TotalOrdersHIGHSales,
+    COUNT(*) as TotalOrders
+From Sales.Orders
+GROUP BY CustomerID;
