@@ -228,3 +228,38 @@ FROM (
 		MAX(Salary) OVER() AS MAX_salary
 	From Sales.Employees
 )t WHERE Salary=MAX_salary;
+
+-- Find the Deviation of each sales fron the minimum and maximum sales amounts.
+Select 
+	OrderID,
+	OrderDate,
+	ProductID,
+	Sales,
+	MAX(Sales) over() as max_value,
+	MAX(Sales) over() - Sales as Deviation_from_max,
+	MIN(COALESCE(Sales,0)) OVER() as min_value,
+	Sales - MIN(COALESCE(Sales,0)) OVER() as Deviation_from_min
+From Sales.Orders;
+
+-- Q:- Calculate the moving average of sales for each product over time.
+Select 
+	OrderID,
+	ProductID,
+	OrderDate,
+	Sales,
+	AVG(Sales) OVER(PARTITION BY ProductID) as AVG_BY_Product,
+	AVG(Sales) OVER(PARTITION BY ProductID ORDER BY OrderDate) as MOVING_AVG_BY_Product            --MOVING AVERAGE
+From Sales.Orders;
+
+/* Calculate the moving average of sales for each product over time, 
+including only the next order. */
+Select 
+	OrderID,
+	ProductID,
+	OrderDate,
+	Sales,
+	AVG(Sales) OVER(
+		PARTITION BY ProductID
+		ORDER BY OrderDate
+		ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) as rOLLING_AVG_FOR_NEXTORDER
+From Sales.Orders;
