@@ -145,7 +145,7 @@ From Sales.Customers as C
 Select
 	o.*
 From Sales.Orders as o
-Where EXISTS (Select 1 
+Where EXISTS (Select * 
 			 From Sales.Customers as c
 			 Where Country= 'Germany'
-			 AND o.CustomerID=c.CustomerID)
+			 AND o.CustomerID=c.CustomerID);
