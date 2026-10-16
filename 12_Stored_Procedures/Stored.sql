@@ -73,6 +73,7 @@ END
 EXEC GetCutomerOFUSA
 
 -- MULTIPLE STORED PROCEDURE
+
 CREATE PROCEDURE GetCustomerDetail @Country NVARCHAR(50) ='USA'
 AS 
 BEGIN
@@ -84,11 +85,11 @@ BEGIN
 
 -- Find the total NO. Of Orders and total Sales 
 	SELECT 
-		COUNT(OrderID) TotalOrders.
-		SUM(Sales) TotalSales 
+		COUNT(o.OrderID) TotalOrders,
+		SUM(o.Sales) TotalSales 
 	FROM Sales.Orders as o
 	JOIN Sales.Customers as c
-	on c.CustomerID=o.CustomersID
+	on c.CustomerID=o.CustomerID
 	WHERE c.Country=@Country;
 END
 
