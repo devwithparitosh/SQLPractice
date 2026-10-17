@@ -29,7 +29,7 @@ This repository contains my SQL practice, interview questions, and mini database
   - [Task 02](https://github.com/devwithparitosh/SQLPractice/blob/main/10_Views/SQL_Views.sql)
 - [CTAS(Create table as Select)](https://github.com/devwithparitosh/SQLPractice/blob/main/11_CTAS_and_TEMP_table/CTAS_.sql)
 - [Temporary Table](https://github.com/devwithparitosh/SQLPractice/blob/main/11_CTAS_and_TEMP_table/TEMP_Table.sql)
-- Stored Procedures
+- [Stored Procedures](https://github.com/devwithparitosh/SQLPractice/blob/main/12_Stored_Procedures/01_Stored.sql)
 - Triggers
 - Transactions
 - Indexes
@@ -61,4 +61,4 @@ This repository contains my SQL practice, interview questions, and mini database
 
 ## Author
 
-Paritosh
+[Paritosh](https://github.com/devwithparitosh)
