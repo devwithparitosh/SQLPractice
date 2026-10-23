@@ -23,6 +23,8 @@ Multiple non-clustered indexes can be created to improve query performance.
 Stores index data separately from the table.
 Multiple non-clustered indexes can exist on a table.
 Contains a copy of the indexed column(s) and a pointer to the actual data row.
+
+Follows the B-tree structure with extra layer of basdata pages
 */
 
 Select 
@@ -47,8 +49,8 @@ WHERE FirstName= 'Anna';
 CREATE INDEX idx_DBCustomers_Score_Country 
 ON Sales.DBCustomers (Score,Country);
 
---Rule :- The Columns Of Index Order Must Match the Order in Your Query.
-
+--Rule :- The Columns Of Index Order Must Match the Order in Your Query (Score,Country).
+-- Score >500 AND Country='USA'
 SELECT 
 	*
 FROM Sales.DBCustomers
